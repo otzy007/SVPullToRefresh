@@ -26,26 +26,24 @@
     
     // setup pull-to-refresh
     [self.tableView addPullToRefreshWithActionHandler:^{
-        NSLog(@"refresh top");
         [weakSelf insertRowAtTop];
     }];
         
     // setup infinite scrolling
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        NSLog(@"refresh bottom");
         [weakSelf insertRowAtBottom];
     }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//    [tableView triggerPullToRefresh];
+    [tableView triggerPullToRefresh];
 }
 
 #pragma mark - Actions
 
 - (void)setupDataSource {
     self.dataSource = [NSMutableArray array];
-    for(int i=0; i<4; i++)
+    for(int i=0; i<15; i++)
         [self.dataSource addObject:[NSDate dateWithTimeIntervalSinceNow:-(i*90)]];
 }
 
